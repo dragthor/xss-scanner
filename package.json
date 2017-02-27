@@ -1,6 +1,6 @@
 {
   "name": "xss-scanner",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cross-Site Scripting (XSS) scanner.",
   "repository": {
     "type": "git",

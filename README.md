@@ -1,7 +1,7 @@
 # xss-scanner
 Cross-Site Scripting (XSS) scanner.  This tool helps to find possible XSS vulnerabilities.  It's intended use is to help "plug" the vulnerability, *not* exploit.  Be nice.  Make the web better.
 
-The two most important countermeasures to prevent cross-site scripting attacks are to: 
+The three most important countermeasures to prevent cross-site scripting attacks are to: 
 
   * Constrain input. 
   * Encode output.

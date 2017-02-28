@@ -1,6 +1,6 @@
 {
   "name": "xss-scanner",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cross-Site Scripting (XSS) scanner.  This tool helps to find possible XSS vulnerabilities.",
   "keywords" : [ "xss", "xss-vulnerability", "xss-detection", "xss-exploitation", "xss-scanner" ],
   "repository": {

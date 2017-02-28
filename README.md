@@ -15,7 +15,7 @@ Html encode output if it contains input from the user or from other sources such
 `npm install`
 
 ## Configuration
-Open up the `payload.js` file and configure the `xssOptions` object.
+Open up the `config.js` file and configure the `xssOptions()` return object.
 
 ## Run
 `npm start`

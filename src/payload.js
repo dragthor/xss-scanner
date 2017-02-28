@@ -1,4 +1,5 @@
 var { stringFormat } = require('./util')
+var { xssOptions } = require('./config')
 
 const http = require("http");
 const fs = require("fs");
@@ -6,21 +7,7 @@ const uuid = require("node-uuid");
 const readline = require("readline");
 const chalk = require("chalk");
 
-const xssOptions = {
-    // Proxy Config - one example, watch req/res through Fiddler.
-    // proxy: {
-    //     host: "127.0.0.1",
-    //     port: 8888
-    // },
-
-    fileOutput: false,
-    host: "www.yourwebsite.com",
-    port: 80,
-    path: "/special.plp?page={0}",
-    method: "POST",
-    protocol: "http:",
-    postData: "paramName1=paramValue1&paramName2=paramValue2"
-};
+const config = xssOptions();
 
 const payloadFileReader = readline.createInterface({
     input: fs.createReadStream("data/payload.txt")
@@ -35,25 +22,25 @@ payloadFileReader.on("line", (line) => {
 var attack = function (line) {
     try {
         var reqOptions = {
-            host: xssOptions.host,
-            port: xssOptions.port,
-            protocol: xssOptions.protocol,
-            method: xssOptions.method,
-            path: stringFormat(xssOptions.path, escape(line)),
-            headers: { 
-                "User-Agent" : "xss-scanner"
+            host: config.host,
+            port: config.port,
+            protocol: config.protocol,
+            method: config.method,
+            path: stringFormat(config.path, escape(line)),
+            headers: {
+                "User-Agent": "xss-scanner"
             }
         };
 
-        if (xssOptions.proxy) {
-            reqOptions.host = xssOptions.proxy.host;
-            reqOptions.port = xssOptions.proxy.port;
-            reqOptions.headers["Host"] = xssOptions.host;
+        if (config.proxy) {
+            reqOptions.host = config.proxy.host;
+            reqOptions.port = config.proxy.port;
+            reqOptions.headers["Host"] = config.host;
         }
 
-        if (xssOptions.method === "POST") {
+        if (config.method === "POST") {
             reqOptions.headers["Content-Type"] = "application/x-www-form-urlencoded";
-            reqOptions.headers["Content-Length"] = Buffer.byteLength(xssOptions.postData)
+            reqOptions.headers["Content-Length"] = Buffer.byteLength(config.postData)
         }
 
         var request = http.request(reqOptions, (res) => {
@@ -72,7 +59,7 @@ var attack = function (line) {
 
                 console.log(chalk.red(line));
 
-                if (xssOptions.fileOutput === false) return;
+                if (config.fileOutput === false) return;
 
                 fs.writeFile("output/" + uuid.v4() + ".html", rawData, (err) => {
                     if (err) {
@@ -82,12 +69,12 @@ var attack = function (line) {
             });
         });
 
-        if (xssOptions.method === "POST") {
-            request.write(xssOptions.postData);
+        if (config.method === "POST") {
+            request.write(config.postData);
         }
 
         request.end();
-    } catch (err) { 
+    } catch (err) {
         console.log(chalk.red(err + " - " + line));
     }
 };

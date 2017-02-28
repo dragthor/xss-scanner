@@ -23,7 +23,7 @@ Open up the `config.js` file and configure the `xssOptions()` return object.
 `npm start`
 
 ## Results
-The console shows the XSS parameter values that have made it back with a status code 200.  You can also dump the resulting Html to a file.  Unfortunately, you have to manually check these.  I prefer to use the latest version of Firefox with add-ons and extensions disabled.  Other XSS tools, such as Burp Suite, also required some manual checking.
+The console shows the XSS parameter values that have made it back with a status code 200.  You can also dump the resulting Html to a file.  Unfortunately, you have to manually check these.  I prefer to use the latest version of Firefox with add-ons and extensions disabled.  Other XSS tools, such as Burp Suite, also require some manual checking.
 
 At the top of the Html content, look for a `<![CDATA[ \"-alert(123456789))// ]]>`.  It contains the offending XSS injection payload value.
 

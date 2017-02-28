@@ -1,3 +1,5 @@
+var { stringFormat } = require('./util')
+
 const http = require("http");
 const fs = require("fs");
 const uuid = require("node-uuid");
@@ -88,14 +90,4 @@ var attack = function (line) {
     } catch (err) { 
         console.log(chalk.red(err + " - " + line));
     }
-};
-
-// Thanks ASP.NET AJAX 1.0 Source Code Released
-// https://weblogs.asp.net/scottgu/asp-net-ajax-1-0-source-code-released
-var stringFormat = function (s) {
-    for (var i = 0; i < arguments.length - 1; i++) {
-        var reg = new RegExp("\\{" + i + "\\}", "gm");
-        s = s.replace(reg, arguments[i + 1]);
-    }
-    return s;
 };

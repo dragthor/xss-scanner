@@ -1,6 +1,8 @@
 # xss-scanner
 Cross-Site Scripting (XSS) scanner.  This tool helps to find possible XSS vulnerabilities.  It's intended use is to help "plug" the vulnerability, *not* exploit.  Be nice.  Make the web better.
 
+[![Build Status](https://travis-ci.org/dragthor/xss-scanner.svg?branch=master)](https://travis-ci.org/dragthor/xss-scanner)
+
 The three most important countermeasures to prevent cross-site scripting attacks are to: 
 
   * Constrain input. 

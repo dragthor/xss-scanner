@@ -1,5 +1,5 @@
-var { stringFormat } = require('./util')
-var { xssOptions } = require('./config')
+var { stringFormat } = require('./util');
+var { xssOptions } = require('./config');
 
 const http = require("http");
 const fs = require("fs");

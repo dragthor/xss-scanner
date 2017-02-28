@@ -1,4 +1,4 @@
-var { stringFormat } = require('../src/util')
+var { stringFormat } = require('../src/util');
 
 const chai = require("chai");
 const expect = chai.expect;

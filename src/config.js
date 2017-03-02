@@ -10,6 +10,7 @@ function xssOptions() {
         //     port: 8888
         // },
 
+        payloadFile: "data/payload.test.txt",
         fileOutput: false,
         host: "www.yourwebsite.com",
         port: 80,

@@ -30,3 +30,4 @@ At the top of the Html content, look for a `<![CDATA[ \"-alert(123456789))// ]]>
 ## Additional Resources
 
 [OWASP XSS Cheatsheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
+

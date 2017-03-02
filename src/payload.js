@@ -1,23 +1,12 @@
-var { stringFormat } = require('./util');
+var { stringFormat, ripPayload } = require('./util');
 var { xssOptions } = require('./config');
 
 const http = require("http");
 const fs = require("fs");
 const uuid = require("node-uuid");
-const readline = require("readline");
 const chalk = require("chalk");
 
 const config = xssOptions();
-
-const payloadFileReader = readline.createInterface({
-    input: fs.createReadStream("data/payload.txt")
-});
-
-payloadFileReader.on("line", (line) => {
-    if (line.length === 0) return;
-
-    attack(line);
-});
 
 var attack = function (line) {
     try {
@@ -78,3 +67,5 @@ var attack = function (line) {
         console.log(chalk.red(err + " - " + line));
     }
 };
+
+ripPayload(config.payloadFile, attack);

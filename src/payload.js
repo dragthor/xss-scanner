@@ -40,7 +40,7 @@ var attack = function (line) {
 
         if (config.method === "POST") {
             reqOptions.headers["Content-Type"] = "application/x-www-form-urlencoded";
-            reqOptions.headers["Content-Length"] = Buffer.byteLength(config.postData)
+            reqOptions.headers["Content-Length"] = Buffer.byteLength(stringFormat(config.postData, line));
         }
 
         var request = http.request(reqOptions, (res) => {
@@ -55,7 +55,7 @@ var attack = function (line) {
                 if (statusCode != 200) return;
                 if (rawData == null || rawData.length === 0) return;
 
-                rawData = "<![CDATA[ " + line + "]]>" + rawData;
+                rawData = "<!-- <![CDATA[ " + line + "]]> -->" + rawData;
 
                 console.log(chalk.red(line));
 
@@ -70,7 +70,7 @@ var attack = function (line) {
         });
 
         if (config.method === "POST") {
-            request.write(config.postData);
+            request.write(stringFormat(config.postData, line));
         }
 
         request.end();

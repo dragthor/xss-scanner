@@ -16,6 +16,6 @@ function xssOptions() {
         path: "/special.plp?page={0}",
         method: "POST",
         protocol: "http:",
-        postData: "paramName1=paramValue1&paramName2=paramValue2"
+        postData: "paramName1={0}&paramName2=paramValue2"
     };
 }

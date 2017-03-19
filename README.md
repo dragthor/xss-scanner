@@ -13,6 +13,8 @@ Url encode output URLs if they are constructed from input.
 
 Html encode output if it contains input from the user or from other sources such as databases. 
 
+Cross platform - macOS, Linux, and Windows.  It's also working my Raspberry Pi 3 Model B.
+
 ## Installation
 `npm install`
 
